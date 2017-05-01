@@ -30,7 +30,7 @@ $(function () {
         localStorage["lastSelected"] = tag;
         workerCount++;
 
-        var worker = new Worker("/js/worker.js");
+        var worker = new Worker("js/worker.js");
 
         writeLog(minute + "min timer started!", tag, workerCount);
         worker.postMessage({ add: minute, id: workerCount });
