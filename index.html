@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>*α*MVPTimer</title>
+
+    <script src="/js/libs/jquery-1.12.3.min.js"></script>
+    <script src="/js/main.js"></script>
+</head>
+
+<body>
+    <div style="padding:10px 0;">
+        <input id="TimerTag" type="text" value="狸猫" />
+        <input id="addTimer30" type='button' value="AddTimer(30min)" />
+        <input id="addTimer120" type='button' value="AddTimer(120min)" />
+        <input id="addTimerCustom" type='button' value="AddTimer(Custom)" />
+        <input id="addTimerCustomMinute" type="number" min="0" value="60" />
+    </div>
+    <p id='NotificationDeniedText' style="color:red;">未授权通知</p>
+    <div>
+        <textarea id="log" style="width:100%;height:500px;"></textarea>
+    </div>
+</body>
+
+</html>
