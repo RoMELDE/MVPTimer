@@ -26,31 +26,31 @@ onmessage = function (evt) {
         var current20 = new Date(current);
         current20.setMinutes(current.getMinutes() + 20);
         if (isNotAlerted.is0s && targetDate <= current) {
-            isNotAlerted.is0s == false;
+            isNotAlerted.is0s = false;
             postMessage({ id: evt.data.id, terminate: true, notification: true, message: "计时结束！" });
         }
         else if (isNotAlerted.is30s && targetDate <= current30s) {
-            isNotAlerted.is30s == false;
+            isNotAlerted.is30s = false;
             postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩30秒！" });
         }
         else if (isNotAlerted.is1m && targetDate <= current1) {
-            isNotAlerted.is1m == false;
+            isNotAlerted.is1m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩1分钟！" });
         }
         else if (isNotAlerted.is3m && targetDate <= current3) {
-            isNotAlerted.is3m == false;
+            isNotAlerted.is3m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩3分钟！" });
         }
         else if (isNotAlerted.is5m && targetDate <= current5) {
-            isNotAlerted.is5m == false;
+            isNotAlerted.is5m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩5分钟！" });
         }
         else if (isNotAlerted.is10m && targetDate <= current10) {
-            isNotAlerted.is10m == false;
+            isNotAlerted.is10m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: false, message: "还剩10分钟！" });
         }
         else if (isNotAlerted.is20m && targetDate <= current20) {
-            isNotAlerted.is20m == false;
+            isNotAlerted.is20m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: false, message: "还剩20分钟！" });
         }
     };
