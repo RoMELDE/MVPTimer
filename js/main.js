@@ -27,6 +27,7 @@ $(function () {
 
     var createWorker = function (minute, tag) {
         tag = tag || "";
+        localStorage["lastSelected"] = tag;
         workerCount++;
 
         var worker = new Worker("/js/worker.js");
