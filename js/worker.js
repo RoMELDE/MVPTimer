@@ -33,23 +33,23 @@ onmessage = function (evt) {
             isNotAlerted.is30s = false;
             postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩30秒！" });
         }
-        else if (isNotAlerted.is1m && targetDate <= current1) {
+        else if (isNotAlerted.is1m && evt.data.add > 1 && targetDate <= current1) {
             isNotAlerted.is1m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩1分钟！" });
         }
-        else if (isNotAlerted.is3m && targetDate <= current3) {
+        else if (isNotAlerted.is3m && evt.data.add > 3 && targetDate <= current3) {
             isNotAlerted.is3m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩3分钟！" });
         }
-        else if (isNotAlerted.is5m && targetDate <= current5) {
+        else if (isNotAlerted.is5m && evt.data.add > 5 && targetDate <= current5) {
             isNotAlerted.is5m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩5分钟！" });
         }
-        else if (isNotAlerted.is10m && targetDate <= current10) {
+        else if (isNotAlerted.is10m && evt.data.add > 10 && targetDate <= current10) {
             isNotAlerted.is10m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: false, message: "还剩10分钟！" });
         }
-        else if (isNotAlerted.is20m && targetDate <= current20) {
+        else if (isNotAlerted.is20m && evt.data.add > 20 && targetDate <= current20) {
             isNotAlerted.is20m = false;
             postMessage({ id: evt.data.id, terminate: false, notification: false, message: "还剩20分钟！" });
         }
