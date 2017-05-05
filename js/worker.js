@@ -4,6 +4,7 @@ onmessage = function (evt) {
     targetDate.setMinutes(targetDate.getMinutes() + evt.data.add);
     var isNotAlerted = {
         is0s: true,
+        is10s: true,
         is30s: true,
         is1m: true,
         is3m: true,
@@ -13,6 +14,8 @@ onmessage = function (evt) {
     };
     var checkDate = function () {
         var current = new Date();
+        var current10s = new Date(current);
+        current10s.setSeconds(current.getSeconds() + 10);
         var current30s = new Date(current);
         current30s.setSeconds(current.getSeconds() + 30);
         var current1 = new Date(current);
@@ -28,6 +31,10 @@ onmessage = function (evt) {
         if (isNotAlerted.is0s && targetDate <= current) {
             isNotAlerted.is0s = false;
             postMessage({ id: evt.data.id, terminate: true, notification: true, message: "计时结束！" });
+        }
+        else if (isNotAlerted.is10s && targetDate <= current10s) {
+            isNotAlerted.is10s = false;
+            postMessage({ id: evt.data.id, terminate: false, notification: true, message: "还剩10秒！" });
         }
         else if (isNotAlerted.is30s && targetDate <= current30s) {
             isNotAlerted.is30s = false;
