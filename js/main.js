@@ -15,7 +15,7 @@ $(function () {
 
     var writeLog = function (text, tag, id) {
         text = "【" + tag + padLeft(id) + "】" + text + "\t" + new Date().toISOString();
-        $('#log').text(text + text.length > 0 ? "\r\n" : "" + $('#log').text());
+        $('#log').text(text + (text.length > 0 ? "\r\n" : "") + $('#log').text());
     }
 
     var workerCount = 0;
