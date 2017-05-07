@@ -12,7 +12,7 @@ $(function () {
         return pad.substring(0, pad.length - str.length) + str;
     }
 
-    var createWorker = function (minute, tag) {
+    var createWorker = function (minute, tag, icon) {
         tag = tag || "";
         localStorage["lastSelected"] = tag;
         workerCount++;
@@ -54,10 +54,10 @@ $(function () {
                 var current = $(this).data('data');
                 $('#TimerTag').val(current.NameZh);
                 if (current.Type == "MINI") {
-                    createWorker(30, current.NameZh);
+                    createWorker(30, current.NameZh, "img/Face/" + current.Icon + ".png");
                 }
                 else {
-                    createWorker(120, current.NameZh);
+                    createWorker(120, current.NameZh, "img/Face/" + current.Icon + ".png");
                 }
             });
             $('#timerList').append($div);
