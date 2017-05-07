@@ -23,7 +23,11 @@ $(function () {
         worker.postMessage({ add: minute, id: workerCount });
         worker.onmessage = function (evt) {
             if (Notification && Notification.permission === "granted" && evt.data.notification) {
-                var notification = new Notification("【" + tag + padLeft(evt.data.id) + "】" + evt.data.message, { tag: evt.data.id, requireInteraction: true });
+                var notification = new Notification("【" + tag + padLeft(evt.data.id) + "】" + evt.data.message, {
+                    icon: icon,
+                    tag: evt.data.id,
+                    requireInteraction: true
+                });
             }
             writeLog(evt.data.message, tag, evt.data.id);
             if (evt.data.terminate) {
