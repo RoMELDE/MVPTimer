@@ -32,7 +32,6 @@ $(function () {
             writeLog(evt.data.message, tag, evt.data.id);
             if (evt.data.terminate) {
                 worker.terminate();
-                writeLog(evt.data.message, tag, evt.data.id);
             }
         };
 
