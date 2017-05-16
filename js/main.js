@@ -78,6 +78,13 @@ $(function () {
             var tag = $('#TimerTag').val();
             createWorker(parseInt($('#addTimerCustomMinute').val() || 1), tag);
         })
+        $('#testNotification').click(function () {
+            var notification = new Notification("【test】" + "test", {
+                    icon: "img/Face/Smokie.png",
+                    tag: "test",
+                    requireInteraction: true
+                });
+        })
     };
 
     var init = function () {
