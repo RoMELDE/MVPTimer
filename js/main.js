@@ -1,6 +1,4 @@
 $(function () {
-    navigator.serviceWorker.register('js/sw.js');
-
     var writeLog = function (text, tag, id) {
         text = "【" + tag + padLeft(id) + "】" + text + "\t" + new Date().toISOString();
         $('#log').text(text + (text.length > 0 ? "\r\n" : "") + $('#log').text());
@@ -24,12 +22,10 @@ $(function () {
         worker.postMessage({ add: minute, id: workerCount });
         worker.onmessage = function (evt) {
             if (Notification && Notification.permission === "granted" && evt.data.notification) {
-                navigator.serviceWorker.ready.then(function (registration) {
-                    registration.showNotification("【" + tag + padLeft(evt.data.id) + "】" + evt.data.message, {
-                        icon: icon,
-                        tag: evt.data.id,
-                        requireInteraction: true
-                    });
+                Push.create("【" + tag + padLeft(evt.data.id) + "】" + evt.data.message, {
+                    icon: icon,
+                    tag: evt.data.id,
+                    requireInteraction: true
                 });
             }
             writeLog(evt.data.message, tag, evt.data.id);
@@ -82,17 +78,16 @@ $(function () {
             createWorker(parseInt($('#addTimerCustomMinute').val() || 1), tag);
         })
         $('#testNotification').click(function () {
-            navigator.serviceWorker.ready.then(function (registration) {
-                registration.showNotification("【test】test", {
-                    icon: "img/Face/Smokie.png",
-                    tag: "test",
-                    requireInteraction: true
-                });
+            Push.create("【test】test", {
+                icon: "img/Face/Smokie.png",
+                tag: "test",
+                requireInteraction: true
             });
         })
     };
 
     var init = function () {
+        navigator.serviceWorker.register('js/sw.js');
         //init Notification
         if (Notification && Notification.permission !== "granted") {
             Notification.requestPermission(function (status) {
