@@ -1,4 +1,5 @@
 $(function () {
+    navigator.serviceWorker.register('js/sw.js');
 
     var writeLog = function (text, tag, id) {
         text = "【" + tag + padLeft(id) + "】" + text + "\t" + new Date().toISOString();
@@ -23,10 +24,12 @@ $(function () {
         worker.postMessage({ add: minute, id: workerCount });
         worker.onmessage = function (evt) {
             if (Notification && Notification.permission === "granted" && evt.data.notification) {
-                var notification = new Notification("【" + tag + padLeft(evt.data.id) + "】" + evt.data.message, {
-                    icon: icon,
-                    tag: evt.data.id,
-                    requireInteraction: true
+                navigator.serviceWorker.ready.then(function (registration) {
+                    registration.showNotification("【" + tag + padLeft(evt.data.id) + "】" + evt.data.message, {
+                        icon: icon,
+                        tag: evt.data.id,
+                        requireInteraction: true
+                    });
                 });
             }
             writeLog(evt.data.message, tag, evt.data.id);
@@ -79,11 +82,13 @@ $(function () {
             createWorker(parseInt($('#addTimerCustomMinute').val() || 1), tag);
         })
         $('#testNotification').click(function () {
-            var notification = new Notification("【test】" + "test", {
+            navigator.serviceWorker.ready.then(function (registration) {
+                registration.showNotification("【test】test", {
                     icon: "img/Face/Smokie.png",
                     tag: "test",
                     requireInteraction: true
                 });
+            });
         })
     };
 
