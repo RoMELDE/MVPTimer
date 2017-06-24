@@ -87,7 +87,6 @@ $(function () {
     };
 
     var init = function () {
-        navigator.serviceWorker.register('js/sw.js');
         //init Notification
         if (Notification && Notification.permission !== "granted") {
             Notification.requestPermission(function (status) {
